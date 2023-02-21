@@ -1,0 +1,51 @@
+{% extends "upload_app/base.html" %}
+{% load static %}
+{% block content %}
+        <legend>Upload Customs Document</legend>
+        <form
+        action="{% url 'index' %}"
+        method="post"
+        enctype="multipart/form-data" id="form-fields">
+        {% csrf_token %}
+          <p id="msg" class="msg">
+          </p>
+          <div class="hide" id="trans_num">
+            <p class="msg"></p>
+            {{ form.trans_num.label_tag }}
+            {{ form.trans_num }}
+          </div>
+          <div class="hide" id="ccd_num">
+            <p class="msg"></p>
+            {{ form.ccd_num.label_tag }}
+            {{ form.ccd_num }}
+          </div>
+          <div class="hide" id="port_of_entry">
+            <p class="msg"></p>
+            {{ form.port_of_entry.label_tag }}
+            {{ form.port_of_entry }}
+          </div>
+          <div class="hide" id="eta">
+            <p class="msg"></p>
+            <label>ETA</label>
+            {{ form.eta_date }}
+            {{ form.eta_time }}
+          </div>
+          <div id="choose-file" class="show">
+          {{ form.userfile.label_tag }}
+          {{ form.userfile }}
+          </div> 
+          <input
+            class="hide"
+            type="submit"
+            name="submit-btn"
+            value="Submit"
+          />
+          <div id="selected-file" class="hide">
+            {{ form.userfile.errors }}
+            <small id="filename-msg"></small>
+            <a id="go-back" href="#"
+              >&#x2190; Select a different file</a
+            >
+          </div>
+        </form>
+{% endblock %}
