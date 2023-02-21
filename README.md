@@ -33,7 +33,7 @@ git clone https://github.com/daustin391/customs-document-uploader.git
 2. Navigate to the project directory:
 
 ```
-cd uploader
+cd customs-document-uploader
 ```
 
 3. Install the required dependencies using pip:
