@@ -27,7 +27,7 @@ To install and run this application, you'll need to follow these steps:
 1. Clone the repository to your local machine using Git:
 
 ```
-git clone
+git clone https://github.com/daustin391/customs-document-uploader.git
 ```
 
 2. Navigate to the project directory:
@@ -89,4 +89,4 @@ If you have any feedback or suggestions, please feel free to create an issue on 
 
 ## Acknowledgments
 
-I am thankful for the Django documentation, which was very helpful during the development of this application, especially the getCsrf() function of main.js, which has only minor changes from the code provided in the documentation on (Using CSRF protection with AJAX)[https://docs.djangoproject.com/en/4.1/howto/csrf/#using-csrf-protection-with-ajax].
+I am thankful for the Django documentation, which was very helpful during the development of this application, especially the getCsrf() function of main.js, which has only minor changes from the code provided in the documentation on [Using CSRF protection with AJAX](https://docs.djangoproject.com/en/4.1/howto/csrf/#using-csrf-protection-with-ajax).
