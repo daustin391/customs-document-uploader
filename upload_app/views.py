@@ -4,7 +4,7 @@ Views for document uploading application.
 GET requests render the index page template with an empty form.
 The application makes AJAX POST requests which are handled by the index_post() view.
 
-For demonstration purposes, a mock API endpoint is provided that returns the same
+For demonstration purposes, a mock API endpoint is available that returns the same
 response regardless of the request payload.
 """
 

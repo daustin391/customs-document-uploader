@@ -55,21 +55,25 @@ python manage.py runserver
 If you want to use this project in a production environment, please exercise caution. Follow these steps:
 
 1. Deploy as you would any other Django application.
-2. Create a subclass of `APIClient` base class provided in `upload_app/api_clients.py`. This subclass should implement the required send_data() method to send the form data to your API endpoint. Here is an example:
+2. Create a subclass of `APIClient` base class provided in `upload_app/api_clients.py`. This subclass should implement the required prepare_data() method to manipulate the form fields to match your API endpoint. Here is an example:
 
 ```
 from upload_app.api_clients import APIClient
 
 class MyAPIClient(APIClient):
-    def send_data(self, form):
-        # Your implementation to send data and file to the API endpoint
-        pass
+    def prepare_data(self, form):
+        # Your implementation to prepare data to match expectations of the API endpoint
+        return payload
 ```
 
 Use this subclass to manipulate data coming from the web form into whatever is expected by your API.
 
-3. Include the fully qualified class name in your Django settings:
-   `API_CLIENT = "some_module.MyAPIClient"`
+3. Include the fully qualified class name in your Django settings, as well as the URL to your endpoint:
+
+   ```
+   API_CLIENT = "some_module.MyAPIClient"
+   API_URL = "https://someapi.com/documents/"
+   ```
 
 4. Create an environment variable named `API_KEY` and set it to your API key.
 
@@ -77,7 +81,7 @@ Use this subclass to manipulate data coming from the web form into whatever is e
 
 ### Running tests
 
-This project includes a `tests.py` file that contains unit tests which check the values returned by the views and the POST request made by the `MockAPIClient` class. To run the tests:
+This project includes a `tests.py` file that contains unit tests which check the values returned by the views and the prepare_data method of the `MockAPIClient` class. To run the tests:
 
 ```
 python manage.py test

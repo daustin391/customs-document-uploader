@@ -130,11 +130,10 @@ class TestViewFunctions(TestCase):
 class TestMockAPIClient(TestCase):
     def test_method_prepares_payload_correctly(self):
         """
-        Client makes POST request with the expected payload when send_data() is called.
+        Client prepare_data method returns the expected payload.
 
-        Checks the arguments passed to the mock of requests.post() to verify that the
-        payload is correct. File contents are not checked because requests.post()
-        receives them as a stream that is closed after the call.
+        Checks the dictionary returned by prepare_data to verify that the
+        payload is correct. File contents are not checked.
         """
         client = MockAPIClient("test")
         file = SimpleUploadedFile("test.txt", b"testing, testing, 1,2,3", "text/plain")
@@ -152,10 +151,8 @@ class TestMockAPIClient(TestCase):
         )
         form.is_valid()
 
-        with patch("requests.post") as mock_post:
-            client.send_data(form)
+        payload = client.prepare_data(form)
 
-        payload = mock_post.call_args.kwargs["data"]
         field_data = payload["field_data"].strip()
         self.assertEquals(payload["api_key"], "test")
         self.assertEquals(payload["workflow"], 101)
@@ -172,5 +169,3 @@ class TestMockAPIClient(TestCase):
                 field_data,
                 rf"""<field[^>]*name\s*=\s*["']{name}["'].*?>{value}<\/field>""",
             )
-
-        self.assertIn("userfile", mock_post.call_args.kwargs["files"])

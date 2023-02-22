@@ -185,7 +185,7 @@ $(() => {
               '',
             );
             $(`#${field} p.msg`).text(concatenatedErrors);
-            $("input[name='submit-btn']").blur();
+            $("input[name='submit-btn']").trigger('blur');
           });
         } else {
           resetPage();
