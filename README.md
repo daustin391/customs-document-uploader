@@ -18,6 +18,14 @@ This app is built with the following technologies:
 - jQuery 3.6: used for automatic field population, AJAX requests, and resetting the form.
 - Django 4.1: the web framework this application is built on. I made use of Django's form features for field validations.
 
+# Live Version
+
+The project has been deployed to the following URL:
+
+https://daveaustin.xyz/uploader/
+
+To access the deployed project, simply click on the link above or copy and paste it into your web browser.
+
 ## Installation and Usage
 
 To install and run this application, you'll need to follow these steps:
